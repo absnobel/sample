@@ -1,0 +1,68 @@
+﻿@using System.Web
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @Styles.Render("~/Content/css")
+    <script type="text/javascript">
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+</head>
+<body>
+    @Html.AntiForgeryToken()
+    @if (@User.Identity.IsAuthenticated)
+    {
+   
+        // user is authenticated
+        <div id="applicationHost">
+            @Html.Partial("_splash")
+        </div>
+        
+
+    @Scripts.Render("~/scripts/vendor")
+	<script src="~/Scripts/require.js" data-main="@Url.Content("~/App/main")"></script>
+    
+    } // user is authenticated
+    else
+    {
+        // user isn't authenticated
+        @Scripts.Render("~/scripts/vendor")
+        <div>
+            <header>
+                <nav class="navbar navbar-fixed-top">
+                    <div class="navbar-inner">
+                        <a class="brand" href="/">
+                            <span class="title">Secured Wrestling</span>
+                        </a>
+                    </div>
+                </nav>
+            </header>
+            <section id="content" class="main container-fluid">
+                <div id="loginPanel">
+                    <section id="socialLoginPanel">
+                        @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
+                    </section>
+                </div>
+            </section>
+            <nav class="navbar navbar-fixed-bottom">
+                <div class="navbar-inner navbar-content-center">
+                    <!--<span class="pull-left"><a href="http://johnpapa.net/spa" target="_blank">Learn how to build a SPA </a></span>-->
+                    <!--<span class="pull-right"><a href="http://johnpapa.net/hottowel" target="_blank">Hot Towel SPA - © 2013 JohnPapa.net</a></span>-->
+                </div>
+            </nav>
+        </div>
+    }
+</body>
+</html>  
