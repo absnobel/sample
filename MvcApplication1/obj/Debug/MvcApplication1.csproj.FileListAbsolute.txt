@@ -105,3 +105,4 @@ C:\Users\Aaron\Documents\Visual Studio 2013\Projects\MvcApplication1\MvcApplicat
 C:\Users\Aaron\Documents\Visual Studio 2013\Projects\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.csproj.GenerateResource.Cache
 C:\Users\Aaron\Documents\Visual Studio 2013\Projects\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.dll
 C:\Users\Aaron\Documents\Visual Studio 2013\Projects\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.pdb
+C:\Users\Aaron\documents\visual studio 2013\Projects\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache

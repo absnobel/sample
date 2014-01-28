@@ -271,12 +271,15 @@
     <Content Include="App\main.js" />
     <Content Include="App\services\datacontext.js" />
     <Content Include="App\services\logger.js" />
+    <Content Include="App\viewmodels\aboutus.js" />
     <Content Include="App\viewmodels\details.js" />
     <Content Include="App\viewmodels\home.js" />
     <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\views\aboutus.html" />
     <Content Include="App\views\details.html" />
     <Content Include="App\views\footer.html" />
     <Content Include="App\views\home.html" />
+    <Content Include="App\views\subnav.html" />
     <Content Include="App\views\nav.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -289,6 +292,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\durandal.css" />
     <Content Include="Content\ie10mobile.css" />
+    <Content Include="Content\images\banner.png" />
+    <Content Include="Content\images\bg.png" />
+    <Content Include="Content\images\brand.png" />
+    <Content Include="Content\images\brandsm.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\icon.png" />

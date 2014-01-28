@@ -152,11 +152,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
-.btn-info:hover,
-.btn-info:focus {
-  background-color: #2aabd2;
-  background-position: 0 -15px;
-}
+
 
 .btn-info:active,
 .btn-info.active {
