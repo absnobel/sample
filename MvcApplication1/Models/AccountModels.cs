@@ -17,48 +17,64 @@ namespace MvcApplication1.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Download> Downloads{ get; set; }
+        public DbSet<Newsfeed> Newsfeeds{ get; set; }
         
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-           
-        }
     }
 
     [Table("UserProfile")]
     public class UserProfile
     {
         [Key]
+       
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
         public DateTime ActiveUntil { get; set; }
     }
-    //[Table("Downloads")]
-    //public class Download
-    //{
-    //    [Key]
-    //    [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-    //    public int DownloadId { get; set; }
+    [Table("Downloads")]
+    public class Download
+    {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int DownloadId { get; set; }
 
-    //    [InverseProperty("UserId")]
-    //   [ForeignKey("downuser")]
-    //    public virtual UserProfile DownloadUserId{ get; set; }
-    //    [InverseProperty("ProductId")]
-    //    [ForeignKey("downprod")]
-    //    public virtual Product DownloadProductId { get; set; }
-    //    public DateTime ActiveUntil { get; set; }
-    //}
-    //[Table("Products")]
-    //public class Product
-    //{
-    //    [Key]
-    //    [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-    //    public int ProductId { get; set; }
-    //    public string ProductTitle { get; set; }
-    //    public string ProductDescription { get; set; }
-    //    public DateTime ActiveUntil { get; set; }
-    //}
+        [InverseProperty("UserId")]
+        public int downuser { get; set; }
+        public virtual UserProfile user { get; set; }
+      [InverseProperty("ProductId")]
+        public int downprod{ get; set; }
+
+        public virtual Product product { get; set; }
+        public DateTime ActiveUntil { get; set; }
+    }
+    [Table("Product")]
+    public class Product
+    {
+        [Key]
+       
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int ProductId { get; set; }
+        public string ProductTitle { get; set; }
+        public string ProductDescription { get; set; }
+        public DateTime DateAdded { get; set; }
+        public float ProductPrice { get; set; }
+        public string ProductLink{ get; set; }
+    }
+    [Table("Newsfeed")]
+    public class Newsfeed
+    {
+        [Key]
+
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int NewsfeedId { get; set; }
+        public string NewsfeedTitle { get; set; }
+        public string NewsfeedDescription { get; set; }
+        public DateTime DateAdded { get; set; }
+        
+    }
     public class RegisterExternalLoginModel
     {
         [Required]

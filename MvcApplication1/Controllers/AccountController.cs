@@ -9,6 +9,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using MvcApplication1.Filters;
 using MvcApplication1.Models;
+using System.IO;
 
 namespace MvcApplication1.Controllers
 {
@@ -129,7 +130,27 @@ namespace MvcApplication1.Controllers
 
             return RedirectToAction("Manage", new { Message = message });
         }
+        public ActionResult Image()
+        {
+            var dir = Server.MapPath("/Images");
+            var png = Directory.GetFiles(dir, "*.current.*").FirstOrDefault();
+            
+            if (!string.IsNullOrEmpty(png)&&System.IO.File.GetLastWriteTime(png) < DateTime.Now.AddDays(-1))
+                return base.File(png, "image/png");
+            else if (!string.IsNullOrEmpty(png))
+            {
+                System.IO.File.Move(png, dir + "/used/" + Path.GetFileName(png.Substring(0,png.IndexOf(".current"))));
+            
+            }
+            string[] pngs = Directory.GetFiles(dir,"*.png").Union(Directory.GetFiles(dir,"*.jpg")).Union(Directory.GetFiles(dir,"*.gif")).ToArray();
 
+            var path = pngs.OrderBy(qu => Guid.NewGuid()).First();
+            var ext = Path.GetExtension(path);
+            var newname = Path.ChangeExtension(path, ".current"+ext);
+            System.IO.File.Move(path, newname);
+            
+            return base.File(newname, "image/"+ext.Substring(1));
+        }
         //
         // GET: /Account/Manage
 
@@ -278,7 +299,7 @@ namespace MvcApplication1.Controllers
                     if (user == null)
                     {
                         // Insert name into the profile table
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName, ActiveUntil = DateTime.Now.AddDays(-1) });
                         db.SaveChanges();
 
                         InitiateDatabaseForNewUser(model.UserName);

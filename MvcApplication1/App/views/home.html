@@ -1,7 +1,15 @@
-﻿<section>
-   
-        <h3 class="page-title" data-bind="text: title"></h3>
-        <ul class="btn-group pictures"></ul>
-   
-   
-</section>
+﻿<section><h3 class="page-title" data-bind="text: title"></h3>
+        
+    <ul class="unstyled" data-bind=" foreach:{data: newsitems, afteradd: GetPicture}">
+        <li>
+            <ul class="btn-group pictures"></ul>
+            <article>
+                <h1 data-bind="text: NewsfeedTitle"></h1>
+                <p data-bind="text: NewsfeedDescription">
+
+                </p>
+            </article>
+
+        </li>
+    </ul>
+   </section>

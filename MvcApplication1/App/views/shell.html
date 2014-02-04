@@ -1,7 +1,15 @@
 ﻿<div class="shellmain">
     <header data-bind="compose: { view: 'nav' }"></header>
+   
     <section class="main main2 container-fluid"   data-bind="compose: { view: 'subnav' }"></section>
-        <section id="content" class="main container-fluid maincontent" 
-                 data-bind="router: { transition: 'entrance', cacheViews: true }"></section>
+    <section id="content" class="main container-fluid maincontent">
+        <section class="row-fluid">
+            <aside id="contentleft" class="span9"
+                     data-bind="router: { transition: 'entrance', cacheViews: true }"></aside>
+
+            <aside id="contentright" class="span3"
+                   data-bind="compose: myTemplate()"></aside>
+            </section>
+</section>
         <footer data-bind="compose: { view: 'footer' }"></footer>
 </div>

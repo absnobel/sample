@@ -33,5 +33,13 @@ namespace  MvcApplication1
             
             return _contextProvider.SaveChanges(saveBundle);
         }
-    }
+
+        
+        // ~/breeze/todos/Todos
+        // ~/breeze/todos/Todos?$filter=IsArchived eq false&$orderby=CreatedAt
+        [HttpGet]
+        public IQueryable<Newsfeed> Newsfeeds() {
+            return _contextProvider.Context.Newsfeeds;
+        }
+   }
 }
